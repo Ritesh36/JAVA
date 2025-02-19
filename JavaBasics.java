@@ -59,6 +59,7 @@ public class JavaBasics {
             reverse = reverse * 10 + rem;
             palindrome = palindrome / 10;
         }
+
         if(n == reverse){
             return true;
         }else {
@@ -73,7 +74,7 @@ public class JavaBasics {
         // primeNo(1, 100);
         // binToDec(100);
         // decToBin(5);
-        isPalindrome(121);
+        System.out.println(isPalindrome(120));
         
 
         //Reverse Number
