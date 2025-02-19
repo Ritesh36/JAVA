@@ -2,31 +2,79 @@ import java.util.Scanner;
 
 public class JavaBasics {
 
-    public static boolean isPrime(int n){
-        if(n == 2){
+    // public static boolean isPrime(int n){
+    //     if(n == 2){
+    //         return true;
+    //     }
+
+    //     for(int i=0; i<=Math.sqrt(n); i++){
+    //         if(n % 2 == 0){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+
+    // public static void primeNo(int start, int end){
+    //     for(int i=start; i<=end; i++){
+    //         if(isPrime(i) == true){
+    //             System.out.print(i+ " ");
+    //         }
+    //     }
+    //     return;
+    // }
+
+    // public static void binToDec(int n){
+    //     int pow = 0;
+    //     int decNum = 0;
+
+    //     while(n > 0){
+    //         int lastDigit = n % 10;
+    //         decNum = (int)(decNum +  lastDigit * Math.pow(2, pow));
+    //         pow++;
+    //         n = n / 10;
+    //     }
+    //     System.out.println(decNum);
+    // }
+
+    // public static void decToBin(int n){
+    //     int binNum = 0;
+    //     int pow = 0;
+
+    //     while(n > 0){
+    //         int rem = n % 2;
+    //         binNum = binNum + (rem * (int)Math.pow(10, pow));
+    //         pow++;
+    //         n = n / 2;
+    //     }
+    //     System.out.println(binNum);
+    // }
+
+    public static boolean isPalindrome(int n){
+        int palindrome = n;
+        int reverse = 0;
+
+        while(palindrome != 0){
+            int rem = palindrome % 10;
+            reverse = reverse * 10 + rem;
+            palindrome = palindrome / 10;
+        }
+        if(n == reverse){
             return true;
+        }else {
+            return false;
         }
-
-        for(int i=0; i<=Math.sqrt(n); i++){
-            if(n % 2 == 0){
-                return false;
-            }
-        }
-        return true;
     }
 
-    public static void primeNo(int start, int end){
-        for(int i=start; i<=end; i++){
-            if(isPrime(i) == true){
-                System.out.print(i+ " ");
-            }
-        }
-        return;
-    }
+    
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         
-        primeNo(1, 100);
+        // primeNo(1, 100);
+        // binToDec(100);
+        // decToBin(5);
+        isPalindrome(121);
+        
 
         //Reverse Number
         // int n = 29052005;
