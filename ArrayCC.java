@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class ArrayCC {
     public static void updateArray(int marks[]){
         for(int i=0; i<marks.length; i++){
@@ -15,7 +13,7 @@ public class ArrayCC {
         }
 
         updateArray(marks);
-        
+
         System.out.println("After updateArray: ");
         for(int i=0; i<marks.length; i++){
             System.out.println(marks[i]);
