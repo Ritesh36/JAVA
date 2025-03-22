@@ -40,12 +40,61 @@ public class Matrices {
         }
         System.out.println();
     }
-    public static void main(String args[]){
-        int matrix[][] = {{1,2,3,4},
-                          {5,6,7,8},
-                          {9,10,11,12},
-                          {13,14,15,16}};
+
+    public static int digonalSum(int matrix[][]){
+        int sum = 0;  //O(n^2)
+
+        // for(int i=0; i<matrix.length; i++){
+        //     for(int j=0; j<matrix.length; j++){
+        //         if(i == j){
+        //             sum += matrix[i][j];
+        //         } else if(i + j == matrix.length - 1){
+        //             sum += matrix[i][j];
+        //         }
+        //     }
+        // }
+        // return sum;
+
+        for(int i=0; i<matrix.length; i++){  //O(n)
+
+            sum += matrix[i][i];
+
+            if(i != matrix.length - 1 - i)
+                sum += matrix[i][matrix.length - 1 - i];
+        }
+
+        return sum;
         
-        spiralMatrix(matrix);
+    }
+
+    public static boolean staircaseSearchMatrix(int matrix[][], int key){
+        int row = 0, col = matrix.length-1;
+
+        while(row <= matrix.length && col >= 0){
+            if(matrix[row][col] == key){
+                System.out.println("Key found at (" + row + "," + col + ")");
+                return true;
+            }
+            else if(key < matrix[row][col]){
+                col--;
+            }
+            else {
+                row ++;
+            }
+        }
+
+        System.out.println("Key not found");
+        return false;
+    }
+    public static void main(String args[]){
+        int matrix[][] = {{10, 20, 30, 40},
+                          {15, 25, 35, 45},
+                          {27, 29, 37, 48},
+                          {32, 33, 39, 50}};
+        int key = 33;
+        
+        // spiralMatrix(matrix);
+        // System.out.println(digonalSum(matrix));
+        staircaseSearchMatrix(matrix, key);
     }
 }
