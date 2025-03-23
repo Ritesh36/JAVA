@@ -86,15 +86,60 @@ public class Matrices {
         System.out.println("Key not found");
         return false;
     }
+
+    public static int no_OF_Seven(int matrix[][]){
+
+        int count = 0;
+
+        for(int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix.length; j++){
+                if(matrix[i][j] == 7){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    public static int sum_Of_secondRow(int matrix[][]){
+
+        int sum = 0;
+
+        for(int i=0; i<matrix[0].length; i++){
+            sum += matrix[1][i];
+        }
+
+        return sum;
+    }
+
+    public static void transpose(int matrix[][]){
+        for( int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[i].length; j++){
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+
+        for( int i=0; i<matrix.length; i++){
+            for(int j=0; j<matrix[i].length; j++){
+               System.out.print(matrix[i][j]+ " ");
+            }
+            System.out.println();
+        }
+    }
+
     public static void main(String args[]){
-        int matrix[][] = {{10, 20, 30, 40},
-                          {15, 25, 35, 45},
-                          {27, 29, 37, 48},
-                          {32, 33, 39, 50}};
+        int matrix[][] = {{4, 7, 8},
+                          {8, 8, 7},
+                          };
         int key = 33;
         
         // spiralMatrix(matrix);
         // System.out.println(digonalSum(matrix));
-        staircaseSearchMatrix(matrix, key);
+        // staircaseSearchMatrix(matrix, key);
+        // System.out.println(no_OF_Seven(matrix));
+        // System.out.println(sum_Of_secondRow(matrix));
+        transpose(matrix);
     }
 }
