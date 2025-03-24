@@ -224,19 +224,19 @@ public class ArrayCC {
         return count;
     }
 
-    public int shortestSubarray(int nums[], int k){
-        int start = 0;
-        int currSum = 0;
-        int maxLength = 0;
+    // public int shortestSubarray(int nums[], int k){
+    //     int start = 0;
+    //     int currSum = 0;
+    //     int maxLength = 0;
 
-        for(int end=0; end < nums.length; end++){
-            currSum += nums[end];
+    //     for(int end=0; end < nums.length; end++){
+    //         currSum += nums[end];
 
-            while(currSum >= k && start < end){
+    //         while(currSum >= k && start < end){
                 
-            }
-        }
-    }
+    //         }
+    //     }
+    // }
     
 
     public static void main(String args[]){
