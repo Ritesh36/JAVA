@@ -56,10 +56,15 @@ public class Strings {
         return (float)Math.sqrt(X2 + Y2);
     }
     public static void main(String[] args) {
-        // String str = "madam";
-        String path = "NNNWESWE";
+       String fruits[] = {"apple", "banana", "mango"};
 
-    //    System.out.println(isPalindrome(str));
-    System.out.println(getShortestPath(path));
+       String largest = fruits[0];
+
+       for(int i=1; i<fruits.length; i++){
+        if(largest.compareTo(fruits[i]) < 0){
+            largest = fruits[i];
+        }
+       }
+       System.out.println(largest);
     }
 }
