@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Strings {
 
     public static boolean isPalindrome(String str){
@@ -92,19 +95,83 @@ public class Strings {
         }
         return sb.toString();
     }
+
+    public static int lengthOfLongestString(String str) {
+        int lastIndex[] = new int[128];
+        for(int i=0; i<lastIndex.length; i++) {
+            lastIndex[i] = -1;
+        }
+
+        int maxLength = 0;
+        int start = 0;
+
+        for(int end=0; end<str.length(); end++){
+            char currentChar = str.charAt(end);
+
+            if(lastIndex[currentChar] >= start) {
+                start = lastIndex[currentChar] + 1;
+            }
+            lastIndex[currentChar] = end;
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+
+        return maxLength;
+    }
+
+    public static int countOfLowercase(String str) {
+        int count = 0;
+
+        for(int i=0; i<str.length(); i++){
+            char ch = str.charAt(i);
+            if(ch == 'A' || ch == 'a' || ch == 'E' || ch == 'e' || ch == 'I' || ch == 'i' || ch == 'O' || ch == 'o' || ch == 'U' || ch == 'u'){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    public static boolean isAnagram(String s, String t) {
+        int count[] = new int[26];
+
+        if(s.length() != t.length()){
+            return false;
+        }
+
+        for(int i=0; i<s.length(); i++){
+            count[s.charAt(i) - 'a']++;
+            count[t.charAt(i) - 'a']--;
+        }
+
+        for(int i=0; i<count.length; i++){
+            if(count[i] != 0){
+                return false;
+            }
+        }
+        return true;
+    }
     public static void main(String[] args) {
-    //    String fruits[] = {"apple", "banana", "mango"};
+        String str1 = "smart";
+        String str2 = "heart";
 
-    //    String largest = fruits[0];
+        if(str1.length() == str2.length()){
+            str1.toLowerCase();
+            str2.toLowerCase();
 
-    //    for(int i=1; i<fruits.length; i++){
-    //     if(largest.compareTo(fruits[i]) < 0){
-    //         largest = fruits[i];
-    //     }
-    //    }
-    //    System.out.println(largest);
+            char str1CharArray[] = str1.toCharArray();
+            char str2CharArray[] = str2.toCharArray();
 
-    String str = "aaabbbcd";
-    System.out.println(stringCompress(str));
+            Arrays.sort(str1CharArray);
+            Arrays.sort(str2CharArray);
+
+            boolean result = Arrays.equals(str1CharArray, str2CharArray);
+
+            if(result){
+                System.out.println(str1 + " and " + str2 + " are anagrams of each other");
+            } else {
+                System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
+            }
+        } else {
+            System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
+        }
     }
 }
