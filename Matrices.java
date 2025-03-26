@@ -133,7 +133,7 @@ public class Matrices {
         int matrix[][] = {{4, 7, 8},
                           {8, 8, 7},
                           };
-        int key = 33;
+        // int key = 33;
         
         // spiralMatrix(matrix);
         // System.out.println(digonalSum(matrix));
