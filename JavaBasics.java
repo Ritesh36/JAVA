@@ -8,7 +8,7 @@ public class JavaBasics {
     //     }
 
     //     for(int i=0; i<=Math.sqrt(n); i++){
-    //         if(n % 2 == 0){
+    //         if(n % i == 0){
     //             return false;
     //         }
     //     }
@@ -87,13 +87,6 @@ public class JavaBasics {
         //     System.out.print(lastDigit);
         //     n = n / 10;
         // }
-
-        // while(n > 0){
-        //     int lastDigit = n % 10;
-        //     System.out.print(lastDigit);
-        //     n =  n / 10;
-        // }
-        // System.out.println();
 
         // while(n > 0){
         //     int lastDigit = n % 10;
