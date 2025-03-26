@@ -95,8 +95,7 @@ public class ArrayCC {
                 }
                 System.out.println();
             } 
-            System.out.println();
-            
+            System.out.println();   
         }
     }
 
@@ -131,22 +130,13 @@ public class ArrayCC {
         int trappedWater = 0;
         for(int i=0; i<height.length; i++){
             int waterLevel = Math.min(leftMax[i], rightMax[i]);
-            trappedWater += waterLevel - height[i];
+            // trappedWater += waterLevel - height[i];
+            trappedWater = trappedWater + (waterLevel - height[i]);
         }
 
         return trappedWater;
     }
 
-    public static boolean Question1(int nums[]){
-        for(int i=0; i<nums.length; i++){
-            for(int j=i+1; j<nums.length; j++){
-                if(nums[i] == nums[j]){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
 
     public static int maxProfit(int[] prices) {
         if (prices == null || prices.length <= 1) {
@@ -170,39 +160,6 @@ public class ArrayCC {
         return maxProfit;
     }
 
-    public static int Question3(int prices[]){
-        int minPrice = prices[0];
-        int maxProfit = 0;
-        for(int i=1; i<prices.length; i++){
-            minPrice = Math.min(minPrice, prices[i]);
-            int currentProfit = prices[i] - minPrice;
-            maxProfit = Math.max(maxProfit, currentProfit);
-        }
-        return maxProfit;
-    }
-
-    public static int Question4(int height[]){
-        int leftMax[] = new int[height.length];
-        leftMax[0] = height[0];
-        for(int i=1; i<height.length; i++){
-            leftMax[i] = Math.max(leftMax[i-1], height[i]);
-        }
-
-        int rightMax[] = new int[height.length];
-        rightMax[height.length-1] = height[height.length-1];
-        for(int i=height.length-2; i>=0; i--){
-            rightMax[i] = Math.max(rightMax[i+1], height[i]);
-        }
-
-        int trappedRainWater = 0;
-        for(int i=0; i<height.length; i++){
-            int waterLevel = Math.min(leftMax[i], rightMax[i]);
-            trappedRainWater = waterLevel - height[i];
-            trappedRainWater = trappedRainWater + waterLevel;
-        }
-        return trappedRainWater;
-    }
-
     public static int twoSumPair(int nums[], int target) {
         int start = 0;
         int end = nums.length - 1;
@@ -223,20 +180,6 @@ public class ArrayCC {
         }
         return count;
     }
-
-    // public int shortestSubarray(int nums[], int k){
-    //     int start = 0;
-    //     int currSum = 0;
-    //     int maxLength = 0;
-
-    //     for(int end=0; end < nums.length; end++){
-    //         currSum += nums[end];
-
-    //         while(currSum >= k && start < end){
-                
-    //         }
-    //     }
-    // }
     
 
     public static void main(String args[]){
@@ -244,6 +187,7 @@ public class ArrayCC {
         int[] nums = {1, 2, 3, 4, 5};
         int target = 7;
         System.out.println(twoSumPair(nums, target));
-  
+        // int height[] = {4, 2, 0, 6, 3, 2, 5};
+        // System.out.println(trappedRainWater(height));
     }
 }
