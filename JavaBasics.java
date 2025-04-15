@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class JavaBasics {
 
     // public static boolean isPrime(int n){
