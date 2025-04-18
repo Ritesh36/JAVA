@@ -13,10 +13,9 @@ class Practice {
             mergeArr[m++] = nums2[i];
         }
 
-
         Arrays.sort(mergeArr);
 
-        for(int i=0;i<mergeArr.length;i++){
+        for(int i=0;  i<mergeArr.length; i++){
             System.out.println(mergeArr[i]);
         }
 

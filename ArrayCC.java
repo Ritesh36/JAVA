@@ -20,13 +20,13 @@ public class ArrayCC {
     }
 
     public static int getSmallest(int numbers[]){
-        int samllest = Integer.MAX_VALUE;
+        int smallest = Integer.MAX_VALUE;
         for(int i=0; i<numbers.length; i++){
-            if(samllest > numbers[i]){
-                samllest = numbers[i];
+            if(smallest > numbers[i]){
+                smallest = numbers[i];
             }
         }
-        return samllest;
+        return smallest;
     }
 
     public static int binarySearch(int numbers[], int key){//needs sorted array
@@ -34,8 +34,9 @@ public class ArrayCC {
         int end = numbers.length;
         int mid;
 
+        mid = (start+end)/2;
+
         while(start <= end){
-            mid = (start+end)/2;
 
            if(numbers[mid] == key){
                 return mid;
@@ -85,7 +86,6 @@ public class ArrayCC {
 
     public static void subArray(int numbers[]){
        
-        // int k=0;
         for(int i=0; i<numbers.length; i++){
             int start = i;
             for(int k=i;k<numbers.length;k++){
@@ -186,8 +186,10 @@ public class ArrayCC {
     
         int[] nums = {1, 2, 3, 4, 5};
         int target = 7;
-        System.out.println(twoSumPair(nums, target));
-        // int height[] = {4, 2, 0, 6, 3, 2, 5};
-        // System.out.println(trappedRainWater(height));
+        // System.out.println(binarySearch(nums, 3));
+        // System.out.println(twoSumPair(nums, target));
+        int height[] = {4, 2, 6, 3, 2, 5};
+        System.out.println(trappedRainWater(height));
+        // subArray(nums);
     }
 }
