@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecursionBasics {
 
     static String nos[] = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
@@ -227,6 +230,23 @@ public class RecursionBasics {
         return count + countSubstrings(s, start, end + 1);
     }
 
+    //print Subsequences of array
+    public static void printSubsequences(int idx, int arr[], List<Integer> current) {
+        //Base Case
+        if(idx == arr.length) {
+            System.out.println(current);
+            return;
+        }
+
+        //Include
+        current.add(arr[idx]);
+        printSubsequences(idx + 1, arr, current);
+
+        //Exclude
+        current.remove(current.size() - 1);
+        printSubsequences(idx + 1, arr, current);
+    }
+
 
     public static void main(String[] args) {
         // printDec(10);
@@ -234,18 +254,21 @@ public class RecursionBasics {
         // System.out.println(factorial(5));
         // System.out.println(sumOfNatural(5));
         // System.out.println(fibn(10));
-        int arr[] = {8, 6, 2, 4, 2, 10, 1, 2};
+        // int arr[] = {8, 6, 2, 4, 2, 10, 1, 2};
         // System.out.println(isSorted(arr, 0));
         // System.out.println(lastOccurence(arr, 6, 0));
         // System.out.println(power(2, 10));
         // System.out.println(tilingProblem(2));
-        String str = "appnnacollege";
+        // String str = "appnnacollege";
         // removeDuplicates(str, 0, new StringBuilder(""), new boolean[26]);
         // System.out.println(friendsPairing(3));
         // binaryStrings(3, 0, "");
         // findOccurences(arr, 2, 0);
         // printNos(1234);
         // System.out.println(stringLen(str, 0, 0));
-        System.out.println(countSubstrings("aba", 0, 1)); // Example usage
+        // System.out.println(countSubstrings("aba", 0, 1)); // Example usage
+        int[] arr = {1, 2, 3};
+        List<Integer> current = new ArrayList<>();
+        printSubsequences(0, arr, current);
     }
 }
