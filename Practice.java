@@ -103,9 +103,90 @@ class Practice {
             return tappedWater;
         }
 
+    public static void mergeSort(String arr[], int si, int ei) {
+        if(si >= ei) {
+            return;
+        }
+        int mid = si + (ei - si) / 2;
+        mergeSort(arr, si, mid); //left part
+        mergeSort(arr, mid+1, ei); //right part
+        merge(arr, si, mid, ei);
+    }
+
+    public static void merge(String arr[], int si, int mid, int ei) {
+        String temp[] = new String[ei -si + 1];
+        int i = si; //iterator for left part
+        int j = mid + 1; //iterator for right part
+        int k = 0; //iterator for temp arr
         
-        public static void main(String args[]){
-            int height[] = {1,8,6,2,5,4,8,3,7};
-            System.out.println(maxArea(height));
+        while (i <= mid && j <= ei) {
+            if (arr[i].compareTo(arr[j]) <= 0) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+        
+        while (i <= mid) {
+            temp[k++] = arr[i++];
+        }
+        
+        while (j <= ei) {
+            temp[k++] = arr[j++];
+        }
+        
+        for (i = 0; i < temp.length; i++) {
+            arr[si + i] = temp[i];
+        }
+    }
+
+    public static void printArr(String arr[]) {
+        for(int i=0; i<arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+    public static int majorityElement(int arr[]) {
+
+        int majorityCount = arr.length / 2;
+
+        for(int i=0; i<arr.length; i++) {
+            int count = 0;
+            for(int j=0; j<arr.length; j++) {
+                if(arr[i] == arr[j]) {
+                    count += 1;
+                }
+
+                if(count > majorityCount) {
+                    return arr[i];
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static int getInvCount(int arr[], int n) {
+        int inv_count = 0;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (arr[i] > arr[j]) {
+                    inv_count++;
+                }
+            }
+        }
+        return inv_count;
+    }
+
+        
+    public static void main(String args[]) {
+        // int height[] = {1,8,6,2,5,4,8,3,7};
+        // System.out.println(maxArea(height));
+        // String arr[] = {"sun", "earth", "mars", "mercury"};
+        // mergeSort(arr, 0, arr.length-1);
+        // printArr(arr);
+        // int arr[] = {2, 2, 1, 1, 1, 1, 2, 2};
+        // System.out.println(majorityElement(arr));
+        int arr[] = {1, 20, 6, 4, 5};
+        System.out.println("Inversion Count is " + getInvCount(arr, arr.length));
     }
 }
