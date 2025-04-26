@@ -147,30 +147,62 @@ public class Strings {
             }
         }
         return true;
+
+        // String str1 = "smart";
+        // String str2 = "heart";
+
+        // if(str1.length() == str2.length()){
+        //     str1.toLowerCase();
+        //     str2.toLowerCase();
+
+        //     char str1CharArray[] = str1.toCharArray();
+        //     char str2CharArray[] = str2.toCharArray();
+
+        //     Arrays.sort(str1CharArray);
+        //     Arrays.sort(str2CharArray);
+
+        //     boolean result = Arrays.equals(str1CharArray, str2CharArray);
+
+        //     if(result){
+        //         System.out.println(str1 + " and " + str2 + " are anagrams of each other");
+        //     } else {
+        //         System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
+        //     }
+        // } else {
+        //     System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
+        // }
     }
-    public static void main(String[] args) {
-        String str1 = "smart";
-        String str2 = "heart";
 
-        if(str1.length() == str2.length()){
-            str1.toLowerCase();
-            str2.toLowerCase();
-
-            char str1CharArray[] = str1.toCharArray();
-            char str2CharArray[] = str2.toCharArray();
-
-            Arrays.sort(str1CharArray);
-            Arrays.sort(str2CharArray);
-
-            boolean result = Arrays.equals(str1CharArray, str2CharArray);
-
-            if(result){
-                System.out.println(str1 + " and " + str2 + " are anagrams of each other");
-            } else {
-                System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
-            }
-        } else {
-            System.out.println(str1 + " and " + str2 + " are not anagrams of each other");
+    //longest substring without repeating characters
+    public static int lengthOfLongestSubstring(String s) {
+        int[] lastSeen = new int[128]; // ASCII size
+        for (int i = 0; i < 128; i++) {
+            lastSeen[i] = -1; // initialize all to -1
         }
+    
+        int maxLength = 0;
+        int start = 0; // start of sliding window
+    
+        for (int end = 0; end < s.length(); end++) {
+            char currentChar = s.charAt(end);
+    
+            // if we’ve seen the char before, move start pointer
+            if (lastSeen[currentChar] >= start) {
+                start = lastSeen[currentChar] + 1;
+            }
+    
+            // update last seen position
+            lastSeen[currentChar] = end;
+    
+            // calculate window length
+            maxLength = Math.max(maxLength, end - start + 1);
+        }
+    
+        return maxLength;
+    }
+    
+    public static void main(String[] args) {
+        String str = "abcdabcde";
+        System.out.println(lengthOfLongestSubstring(str));
     }
 }
