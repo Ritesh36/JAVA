@@ -180,16 +180,33 @@ public class ArrayCC {
         }
         return count;
     }
+
+    public static int majorityElement(int[] nums) {
+        int n = nums.length;
+        for(int i=0; i<n; i++){
+            int count = 0;
+            for(int j=0; j<n; j++){
+                if(nums[i] == nums[j]){
+                    count++;
+                }
+            }
+            if(count > n/2){
+                return nums[i];
+            }
+        }
+        return -1;
+    }
     
 
     public static void main(String args[]){
     
-        int[] nums = {1, 2, 3, 4, 5};
+        int[] nums = {1, 2, 2, 1, 1};
         int target = 7;
         // System.out.println(binarySearch(nums, 3));
         // System.out.println(twoSumPair(nums, target));
         int height[] = {4, 2, 6, 3, 2, 5};
-        System.out.println(trappedRainWater(height));
+        // System.out.println(trappedRainWater(height));
         // subArray(nums);
+       System.out.println( majorityElement(nums));
     }
 }
