@@ -13,6 +13,21 @@ public class Backtracking {
         findSubset(str, i+1, ans);
     }
 
+    public static void findPermmutation(String str, String ans) {
+        //Base case
+        if(str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        //recursion
+        for(int i=0; i<str.length(); i++) {
+            char curr = str.charAt(i);
+            String newString = str.substring(0, i) + str.substring(i + 1);
+            findPermmutation(newString, ans+curr);
+        }
+    }
+
     public static boolean isSafe(char board[][], int row, int col) {
 
         //vertical check
@@ -41,7 +56,8 @@ public class Backtracking {
 
     public static void nQueens(char board[][], int row) {
         if(row == board.length) {
-            printBoard(board);
+            // printBoard(board);
+            count++;
             return;
         }
 
@@ -64,6 +80,7 @@ public class Backtracking {
         }
     }
 
+    static int count = 0;
     public static void main(String args[]) {
         int n = 4;
         char board[][] = new char[n][n];
@@ -73,5 +90,9 @@ public class Backtracking {
             }
         }
         nQueens(board, 0);
+        System.out.println("Total number of ways to place queens: " + count);
+
+        // String str = "abc";
+        // findPermmutation(str, "");
     }
 }
