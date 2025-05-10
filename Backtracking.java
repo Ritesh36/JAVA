@@ -80,19 +80,35 @@ public class Backtracking {
         }
     }
 
+    public static int gridWays(int i, int j, int n, int m) {
+        //base case
+        if(i == n-1 && j == m-1) {
+            return 1;
+        } else if(i==n || j==m) {
+            return 0;
+        }
+        //kamm
+        int w1 = gridWays(i+1, j, n, m);  //down
+        int w2 = gridWays(i, j+1, n, m);
+        return w1+w2;
+    }
+
     static int count = 0;
     public static void main(String args[]) {
-        int n = 4;
-        char board[][] = new char[n][n];
-        for(int i=0; i<board.length; i++) {
-            for(int j=0; j<board.length; j++) {
-                board[i][j] = 'X';
-            }
-        }
-        nQueens(board, 0);
-        System.out.println("Total number of ways to place queens: " + count);
+        // int n = 4;
+        // char board[][] = new char[n][n];
+        // for(int i=0; i<board.length; i++) {
+        //     for(int j=0; j<board.length; j++) {
+        //         board[i][j] = 'X';
+        //     }
+        // }
+        // nQueens(board, 0);
+        // System.out.println("Total number of ways to place queens: " + count);
 
         // String str = "abc";
         // findPermmutation(str, "");
+
+        int n = 3, m = 3;
+        System.out.println(gridWays(0, 0, n, m));
     }
 }
