@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -56,25 +57,111 @@ public class ArrayList_Demo {
     //         }
     //     }
     // }
-
-    //2 Pointer Approach
-    public static void pairSum(ArrayList<Integer> arr, int target) {
-        int lp = 0; 
-        int rp = arr.size() - 1;
     
-        while (lp < rp) { // Use lp < rp to avoid infinite loop
-            int sum = arr.get(lp) + arr.get(rp);
-            if (sum == target) {
-                System.out.println("[" + arr.get(lp) + "," + arr.get(rp) + "]");
-                lp++; // Move both pointers to avoid duplicate pairs
-                rp--;
-            } else if (sum < target) {
-                lp++;
-            } else {
-                rp--;
+    //Time Complexity - O(n)
+    public static boolean pairSum2(ArrayList<Integer>list, int target) {
+        int bp = 0;
+
+        for(int i=0; i<list.size()-1; i++) {
+            if(list.get(i) > list.get(i+1)) {
+                bp = i;
+                break;
             }
         }
+        int lp = bp + 1;
+        int rp = bp;
+
+        while(lp != rp) {
+            if(list.get(lp) + list.get(rp) == target) {
+                return true;
+            }
+            if(list.get(lp) + list.get(rp) < target) {
+                lp = (lp + 1) % list.size();
+            } else {
+                rp = (rp - 1 + list.size()) % list.size();
+            }   
+        }
+        return false;
     }
+
+    public static boolean isMonotone(ArrayList<Integer>arr) {
+        boolean inc = true;
+        boolean dec = true;
+        for(int i=0; i<arr.size()-1; i++) {
+            if(arr.get(i) < arr.get(i+1)) {
+                dec = false;
+            } else if(arr.get(i) > arr.get(i+1)) {
+                inc = false;
+            }
+        }
+        return inc || dec;
+    }
+
+    public static ArrayList<Integer> lonelyInt(ArrayList<Integer> arr) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            boolean isLonely = true;
+            int count = 0;
+
+            // Count occurrences of the current element
+            for (int j = 0; j < arr.size(); j++) {
+                if (arr.get(i).equals(arr.get(j))) {
+                    count++;
+                }
+            }
+
+            // If the element appears more than once, it's not lonely
+            if (count > 1) {
+                isLonely = false;
+            }
+
+            // Check the previous element
+            if (i > 0 && Math.abs(arr.get(i) - arr.get(i - 1)) == 1) {
+                isLonely = false;
+            }
+
+            // Check the next element
+            if (i < arr.size() - 1 && Math.abs(arr.get(i) - arr.get(i + 1)) == 1) {
+                isLonely = false;
+            }
+
+            // Add to result if it's lonely
+            if (isLonely) {
+                result.add(arr.get(i));
+            }
+        }
+        return result;
+    }
+
+    public static void mergeTwoSortedList(ArrayList<Integer> list1, ArrayList<Integer> list2) {
+    ArrayList<Integer> mergedList = new ArrayList<>();
+    int i = 0, j = 0;
+
+    while (i < list1.size() && j < list2.size()) {
+        if (list1.get(i) <= list2.get(j)) {
+            mergedList.add(list1.get(i));
+            i++;
+        } else {
+            mergedList.add(list2.get(j));
+            j++;
+        }
+    }
+
+    // Add remaining elements
+    while (i < list1.size()) {
+        mergedList.add(list1.get(i++));
+    }
+
+    while (j < list2.size()) {
+        mergedList.add(list2.get(j++));
+    }
+
+    Collections.sort(mergedList); // Sort the merged list in ascending order
+
+    System.out.println(mergedList);
+}
+
+
     public static void main(String args[]) {
         // ArrayList<Integer> list = new ArrayList<>();
 
@@ -177,14 +264,44 @@ public class ArrayList_Demo {
 
         // System.out.println(storeWater(height));
 
-        ArrayList<Integer> arr = new ArrayList<>();
-        arr.add(1);
-        arr.add(2);
-        arr.add(3);
-        arr.add(4);
-        arr.add(5);
-        arr.add(6);
+        // ArrayList<Integer> arr = new ArrayList<>();
+        // arr.add(1);
+        // arr.add(2);
+        // arr.add(3);
+        // arr.add(4);
+        // arr.add(5);
+        // arr.add(6);
 
-        pairSum(arr, 5);
+        // pairSum(arr, 5);
+
+        // ArrayList<Integer> list = new ArrayList<>();
+        // list.add(11);
+        // list.add(15);
+        // list.add(6);
+        // list.add(8);
+        // list.add(9);
+        // list.add(10);
+
+        // int target = 16;
+
+        // System.out.println(pairSum2(list, target));
+
+        // ArrayList<Integer>arr = new ArrayList<>();
+        // arr.add(1);
+        // arr.add(3);
+        // arr.add(5);
+        // arr.add(3);
+        // System.out.println(lonelyInt(arr));
+
+        ArrayList<Integer> list1 = new ArrayList<>();
+        list1.add(1);
+        list1.add(3);
+        list1.add(5);
+        list1.add(3);
+        ArrayList<Integer> list2 = new ArrayList<>();
+        list2.add(2);
+        list2.add(4);
+        list2.add(6);
+        mergeTwoSortedList(list1, list2);
     }
 }

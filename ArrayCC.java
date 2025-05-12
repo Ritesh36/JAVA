@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ArrayCC {
 
     public static int linearSearch(int numbers[], int key){
@@ -196,17 +198,46 @@ public class ArrayCC {
         }
         return -1;
     }
+
+    public static int missingNumber(int nums[]) {
+        Arrays.sort(nums);
+
+        for(int i=0; i<nums.length-1; i++) {
+           if(nums[i+1] == nums[i] + 1) {
+                continue;
+            } else {
+                return nums[i] + 1;
+            }
+        }
+        return -1;
+    }
+
+    public static void printPascalTriangle(int n) {
+        for (int line = 0; line < n; line++) {
+            int C = 1; // The first value in each row is always 1
+            for (int i = 0; i <= line; i++) {
+                System.out.print(C + " ");
+                C = C * (line - i) / (i + 1); // Calculate the next value in the row
+            }
+            System.out.println();
+        }
+    }
     
 
     public static void main(String args[]){
     
-        int[] nums = {1, 2, 2, 1, 1};
-        int target = 7;
+        // int[] nums = {1, 2, 2, 1, 1};
+        // int target = 7;
         // System.out.println(binarySearch(nums, 3));
         // System.out.println(twoSumPair(nums, target));
-        int height[] = {4, 2, 6, 3, 2, 5};
+        // int height[] = {4, 2, 6, 3, 2, 5};
         // System.out.println(trappedRainWater(height));
         // subArray(nums);
-       System.out.println( majorityElement(nums));
+        // System.out.println( majorityElement(nums));
+
+        // int nums[] = {3, 0, 1};
+        // System.out.println(missingNumber(nums));
+
+        printPascalTriangle(5);
     }
 }
