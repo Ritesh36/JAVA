@@ -13,7 +13,7 @@ public class LinkedList {
     public static Node tail;
     public static int size;
 
-    public void addFirst(int data) {
+    public void addLast(int data) {
         //Step 1 - Create new node
         Node newNode = new Node(data);
         size++;
@@ -24,20 +24,6 @@ public class LinkedList {
         } else {
             newNode.next = head;
             head = newNode;
-        }
-    }
-
-    public void addLast(int data) {
-        //Step 1 - Create new node
-        Node newNode = new Node(data);
-        size++;
-        //Step 2 - Check if the list is empty
-        if(head == null) {
-            head = tail = newNode;
-            return;
-        }else {
-            tail.next = newNode;
-            tail = newNode;
         }
     }
 
@@ -56,7 +42,7 @@ public class LinkedList {
 
     public void add(int idx, int data) {
         if(idx == 0) {
-            addFirst(data);
+            addLast(data);
             return;
         }
         Node newNode = new Node(data);
@@ -73,7 +59,7 @@ public class LinkedList {
         temp.next = newNode;
     }
 
-    public int removeFirst() {
+    public int removeLast() {
         if(size == 0) {
             System.out.println("LL is empty");
             return Integer.MIN_VALUE;
@@ -85,27 +71,6 @@ public class LinkedList {
         }
         int val = head.data;
         head = head.next;
-        size--;
-        return val;
-    }
-
-    public int removeLast() {
-        if(size == 0) {
-            System.out.println("LL is empty");
-            return Integer.MIN_VALUE;
-        } else if(size == 1) {
-            int val = head.data;
-            head = tail = null;
-            size = 0;
-            return val;
-        }
-        Node prev = head;
-        for(int i=0; i<size-2; i++) {
-            prev = prev.next;
-        }
-        int val = tail.data;
-        tail = prev;
-        prev.next = null;
         size--;
         return val;
     }
@@ -333,10 +298,51 @@ public class LinkedList {
         return merge(leftHalf, rightHalf);
     }
 
+    public void zigZag() {
+        //Step 1 - find mid
+        Node slow = head;
+        Node fast = head.next;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+
+        //Step 2 - reverse 2nd half
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+
+        while(curr != null) {
+            next = curr.next;
+            curr.next =  prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node left = head;
+        Node right = prev;
+
+        //Step 3 - merge alternatly
+        Node nextL, nextR;
+
+        while(left != null && right != null) {
+            nextL = left.next;
+            left.next = right;
+            nextR = right.next;
+            right.next = nextL;
+
+            left = nextL;
+            right = nextR;
+        }
+    }
+
     public static void main(String args[]) {
         LinkedList ll = new LinkedList();
-        // ll.addFirst(2);
-        // ll.addFirst(1);
+        // ll.addLast(2);
+        // ll.addLast(1);
         // ll.addLast(2);
         // ll.addLast(1);
 
@@ -352,14 +358,18 @@ public class LinkedList {
         // removeCycle();
         // System.out.println(isCycle());
 
-        ll.addFirst(1);
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addFirst(4);
-        ll.addFirst(5);
+        ll.addLast(5);
+        ll.addLast(4);
+        ll.addLast(3);
+        ll.addLast(2);
+        ll.addLast(1);
 
+        // ll.print();
+        // ll.head = ll.mergeSort(ll.head);
+        // ll.print();
         ll.print();
-        ll.head = ll.mergeSort(ll.head);
+        ll.zigZag();
         ll.print();
+
     }
 }
