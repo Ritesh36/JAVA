@@ -133,32 +133,32 @@ public class ArrayList_Demo {
     }
 
     public static void mergeTwoSortedList(ArrayList<Integer> list1, ArrayList<Integer> list2) {
-    ArrayList<Integer> mergedList = new ArrayList<>();
-    int i = 0, j = 0;
+        ArrayList<Integer> mergedList = new ArrayList<>();
+        int i = 0, j = 0;
 
-    while (i < list1.size() && j < list2.size()) {
-        if (list1.get(i) <= list2.get(j)) {
-            mergedList.add(list1.get(i));
-            i++;
-        } else {
-            mergedList.add(list2.get(j));
-            j++;
+        while (i < list1.size() && j < list2.size()) {
+            if (list1.get(i) <= list2.get(j)) {
+                mergedList.add(list1.get(i));
+                i++;
+            } else {
+                mergedList.add(list2.get(j));
+                j++;
+            }
         }
+
+        // Add remaining elements
+        while (i < list1.size()) {
+            mergedList.add(list1.get(i++));
+        }
+
+        while (j < list2.size()) {
+            mergedList.add(list2.get(j++));
+        }
+
+        Collections.sort(mergedList); // Sort the merged list in ascending order
+
+        System.out.println(mergedList);
     }
-
-    // Add remaining elements
-    while (i < list1.size()) {
-        mergedList.add(list1.get(i++));
-    }
-
-    while (j < list2.size()) {
-        mergedList.add(list2.get(j++));
-    }
-
-    Collections.sort(mergedList); // Sort the merged list in ascending order
-
-    System.out.println(mergedList);
-}
 
 
     public static void main(String args[]) {
