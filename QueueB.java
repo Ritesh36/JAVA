@@ -1,4 +1,5 @@
 import java.util.Queue;
+import java.util.Stack;
 import java.util.LinkedList;
 
 public class QueueB {
@@ -38,6 +39,18 @@ public class QueueB {
             q.add(q.remove());
         }
     }
+
+    public static void reverse(Queue<Integer> q) {
+        Stack<Integer> s = new Stack<>();
+
+        while(!q.isEmpty()) {
+            s.push(q.remove());
+        }
+
+        while(!s.isEmpty()) {
+            q.add(s.pop());
+        }
+    }
     public static void main(String[] args) {
         // MyStack s = new MyStack();
         // s.push(1);
@@ -57,13 +70,14 @@ public class QueueB {
         q.add(3);
         q.add(4);
         q.add(5);
-        q.add(6);
-        q.add(7);
-        q.add(8);
-        q.add(9);
-        q.add(10);
+        // q.add(6);
+        // q.add(7);
+        // q.add(8);
+        // q.add(9);
+        // q.add(10);
 
-        interLeave(q);
+        // interLeave(q);
+        reverse(q);
 
         while(!q.isEmpty()) {
             System.out.print(q.remove()+" ");
