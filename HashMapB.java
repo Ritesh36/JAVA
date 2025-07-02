@@ -142,6 +142,11 @@ public class HashMapB {
         hm.put("US", 50);
         hm.put("Uk", 40);
 
+        System.out.println(hm.keySet());
         System.out.println(hm.get("India"));
+        System.out.println(hm.containKey("US"));
+        System.out.println(hm.remove("US"));
+        System.out.println(hm.isEmpty());
+        System.out.println(hm.keySet());
     }
 }
