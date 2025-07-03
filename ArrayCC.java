@@ -1,7 +1,6 @@
-import java.util.Arrays;
+import java.util.*;
 
 public class ArrayCC {
-
     public static int linearSearch(int numbers[], int key){
         for(int i=0; i<=numbers.length; i++){
             if(numbers[i] == key){
