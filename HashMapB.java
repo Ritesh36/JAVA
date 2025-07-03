@@ -26,6 +26,22 @@ public class HashMapB {
 
         return map.isEmpty();
     }
+
+    public static String getStart(HashMap<String, String> tickets) {
+        HashMap<String, String> revMap = new HashMap<>();
+
+        for(String key : tickets.keySet()) {
+            revMap.put(tickets.get(key), key);
+        }
+
+        for(String key : tickets.keySet()) {
+            if(!revMap.containsKey(key)) {
+                return key;
+            }
+        }
+
+        return null;
+    }
     
     public static void main(String args[]) {
     //    int nums[] = {1, 3, 2, 5, 1, 3, 1, 5, 1};
@@ -51,9 +67,24 @@ public class HashMapB {
     //     }
     //    }
 
-    String s = "liquid";
-    String t = "tulip";
+    // String s = "liquid";
+    // String t = "tulip";
 
-    System.out.println(isAnagram(s, t));
+    // System.out.println(isAnagram(s, t));
+    HashMap<String, String> tickets = new HashMap<>();
+    tickets.put("Chennai", "Bengaluru");
+    tickets.put("Mumbai", "Delhi");
+    tickets.put("Goa", "Chennai");
+    tickets.put("Delhi", "Goa");
+
+    String start = getStart(tickets);
+    System.out.print(start);
+
+    for(String key : tickets.keySet()) {
+        System.out.print("-> "+ tickets.get(start));
+        start = tickets.get(start);
+    }
+    System.out.println();
+
     }
 }
