@@ -143,7 +143,7 @@ public class StackB {
         // System.out.println(isValid(str));
 
         String str = "((a+b))";
-        String str2 = "(a-b)";
+        // String str2 = "(a-b)";
         System.out.println(isDuplicate(str));
     }
 }

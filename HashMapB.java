@@ -71,20 +71,56 @@ public class HashMapB {
     // String t = "tulip";
 
     // System.out.println(isAnagram(s, t));
-    HashMap<String, String> tickets = new HashMap<>();
-    tickets.put("Chennai", "Bengaluru");
-    tickets.put("Mumbai", "Delhi");
-    tickets.put("Goa", "Chennai");
-    tickets.put("Delhi", "Goa");
+    // HashMap<String, String> tickets = new HashMap<>();
+    // tickets.put("Chennai", "Bengaluru");
+    // tickets.put("Mumbai", "Delhi");
+    // tickets.put("Goa", "Chennai");
+    // tickets.put("Delhi", "Goa");
 
-    String start = getStart(tickets);
-    System.out.print(start);
+    // String start = getStart(tickets);
+    // System.out.print(start);
 
-    for(String key : tickets.keySet()) {
-        System.out.print("-> "+ tickets.get(start));
-        start = tickets.get(start);
+    // for(String key : tickets.keySet()) {
+    //     System.out.print("-> "+ tickets.get(start));
+    //     start = tickets.get(start);
+    // }
+    // System.out.println();
+
+    // int arr[] = {15, 2, -2, -8, 1, 7, 10, 23}; //O(n)
+
+    // HashMap<Integer, Integer> map = new HashMap<>();
+
+    // int sum = 0;
+    // int len = 0;
+
+    // for(int j=0; j<arr.length; j++) {
+    //     sum += arr[j];
+    //     if(map.containsKey(sum)) {
+    //         len = Math.max(len, j - map.get(sum));
+    //     } else {
+    //         map.put(sum, j);
+    //     }
+    // }
+
+    // System.out.println("Largest subarray of sum zero is : "+ len);
+
+    int arr[] = {1, 2, 3};
+    int k = 3;
+
+    HashMap<Integer, Integer> map = new HashMap<>();
+
+    map.put(0, 1);
+
+    int sum = 0;
+    int ans = 0;
+
+    for(int i=0; i<arr.length; i++) {
+        sum += arr[i];
+        if(map.containsKey(sum - k)) {
+            ans += map.get(sum - k);
+        }
+        map.put(sum, map.getOrDefault(sum, 0) + 1);
     }
-    System.out.println();
-
+    System.out.println(ans);
     }
 }

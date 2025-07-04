@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Strings {
 
     public static boolean isPalindrome(String str){
