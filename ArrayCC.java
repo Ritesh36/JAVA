@@ -41,9 +41,9 @@ public class ArrayCC {
 
            if(numbers[mid] == key){
                 return mid;
-           } else if(numbers[mid] < key){
+           } else if(numbers[mid] < key){ // key is in right side
                 start = mid + 1;
-           } else {
+           } else {     // key is in left side
                 end = mid - 1;
            }
         }
@@ -224,19 +224,12 @@ public class ArrayCC {
     
 
     public static void main(String args[]){
-    
-        // int[] nums = {1, 2, 2, 1, 1};
-        // int target = 7;
-        // System.out.println(binarySearch(nums, 3));
-        // System.out.println(twoSumPair(nums, target));
-        // int height[] = {4, 2, 6, 3, 2, 5};
-        // System.out.println(trappedRainWater(height));
-        // subArray(nums);
-        // System.out.println( majorityElement(nums));
-
-        // int nums[] = {3, 0, 1};
-        // System.out.println(missingNumber(nums));
-
-        printPascalTriangle(5);
+        // printPascalTriangle(5);
+        int numbers[] = {2, 4, 6, 8, 10};
+        // System.out.println(getLargest(numbers));
+        // System.out.println(getSmallest(numbers));
+        // System.out.println(binarySearch(numbers, 6));
+        // pairArr(numbers);
+        // subArray(numbers);
     }
 }
