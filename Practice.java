@@ -176,6 +176,23 @@ class Practice {
         }
         return inv_count;
     }
+
+    public static int removeDuplicates(int nums[]) {
+        if(nums.length == 0) {
+            return 0;
+        }
+
+        int i = 0;
+
+        for(int j=1; j<nums.length; j++) {
+            if(nums[j] != nums[i]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+
+        return i+1;
+    }
         
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
@@ -185,7 +202,9 @@ class Practice {
         // printArr(arr);
         // int arr[] = {2, 2, 1, 1, 1, 1, 2, 2};
         // System.out.println(majorityElement(arr));
-        int arr[] = {1, 20, 6, 4, 5};
-        System.out.println("Inversion Count is " + getInvCount(arr, arr.length));
+        // int arr[] = {1, 20, 6, 4, 5};
+        // System.out.println("Inversion Count is " + getInvCount(arr, arr.length));
+        int nums[] = {0, 1, 1, 1, 2, 2, 3};
+        System.out.println(removeDuplicates(nums));
     }
 }
