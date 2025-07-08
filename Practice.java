@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 class Practice {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -193,6 +194,23 @@ class Practice {
 
         return i+1;
     }
+
+    public static int missingNumber(int nums[]) {
+        if(nums.length == 0) {
+            return 0;
+        }
+        Arrays.sort(nums);
+        int i;
+
+        for(i=0; i<nums.length-1; i++) {
+            if((nums[i] + 1) == nums[i+1]) {
+                continue;
+            } else {
+                break;
+            }
+        }
+        return i+1;
+    }
         
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
@@ -204,7 +222,10 @@ class Practice {
         // System.out.println(majorityElement(arr));
         // int arr[] = {1, 20, 6, 4, 5};
         // System.out.println("Inversion Count is " + getInvCount(arr, arr.length));
-        int nums[] = {0, 1, 1, 1, 2, 2, 3};
-        System.out.println(removeDuplicates(nums));
+        // int nums[] = {0, 1, 1, 1, 2, 2, 3};
+        // System.out.println(removeDuplicates(nums));
+        int nums[] = {3, 0, 1};
+        System.out.println(missingNumber(nums));
+
     }
 }
