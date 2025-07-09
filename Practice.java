@@ -1,4 +1,5 @@
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 class Practice {
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
@@ -211,6 +212,27 @@ class Practice {
         }
         return i+1;
     }
+
+    public static int maxSumSubArray(int arr[]) {
+        int cs = 0;
+        int maxSum = Integer.MIN_VALUE;
+        for(int i=0; i<arr.length; i++) {
+            cs = Math.max(arr[i], cs + arr[i]);
+            maxSum = Math.max(maxSum, cs);
+        }
+        return maxSum;
+    }
+
+     public boolean isSorted(ArrayList<Integer> nums) {
+        for(int i=0; i<nums.size()-1; i++) {
+            if(nums.get(i) <= nums.get(i+1)) {
+                continue;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
         
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
@@ -224,8 +246,10 @@ class Practice {
         // System.out.println("Inversion Count is " + getInvCount(arr, arr.length));
         // int nums[] = {0, 1, 1, 1, 2, 2, 3};
         // System.out.println(removeDuplicates(nums));
-        int nums[] = {3, 0, 1};
-        System.out.println(missingNumber(nums));
+        // int nums[] = {3, 0, 1};
+        // System.out.println(missingNumber(nums));
+        // int arr[] = {-5, -4, -3};
+        // System.out.println(maxSumSubArray(arr));
 
     }
 }
