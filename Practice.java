@@ -231,6 +231,26 @@ class Practice {
         return true;
     }
 
+    public static int fruitsInBasket(ArrayList<Integer> fruits) {
+        int maxFruits = 0;
+        int left = 0;
+        int right = 0;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        while (right < fruits.size()) {
+            map.put(fruits.get(right), map.getOrDefault(fruits.get(right), 0) + 1);
+            while (map.size() > 2) {
+                map.put(fruits.get(left), map.get(fruits.get(left)) - 1);
+                if (map.get(fruits.get(left)) == 0) {
+                    map.remove(fruits.get(left));
+                }
+                left++;
+            }
+            maxFruits = Math.max(maxFruits, right - left + 1);
+            right++;
+        }
+        return maxFruits;
+    }
+
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
@@ -247,6 +267,15 @@ class Practice {
         // System.out.println(missingNumber(nums));
         // int arr[] = {-5, -4, -3};
         // System.out.println(maxSumSubArray(arr));
+        ArrayList<Integer> fruits = new ArrayList<>();
+        fruits.add(3);
+        fruits.add(3);
+        fruits.add(3);
+        fruits.add(1);
+        fruits.add(2);
+        fruits.add(1);
+        fruits.add(0);
+        System.out.println(fruitsInBasket(fruits));
 
     }
 }
