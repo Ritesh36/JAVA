@@ -221,15 +221,56 @@ public class ArrayCC {
             System.out.println();
         }
     }
+
+    //Prefix Sum
+    public static int[] prefixSum(int arr[]) {
+        for(int i=1; i<arr.length; i++) {
+            arr[i] += arr[i-1];
+        }
+        return arr;
+    }
+
+    public static int[] prefixSum2(int arr[]) {
+        int n = arr.length;
+        int[] prefix = new int[n];
+        prefix[0] = arr[0];
+        for (int i = 1; i < n; i++) {
+            prefix[i] = prefix[i - 1] + arr[i];
+        }
+        return prefix;
+    }
+
+    public static int totalSum(int arr[]) {
+        int totalSum = 0;
+        for(int i=0; i<arr.length; i++) {
+            totalSum += arr[i];
+        }
+        return totalSum;
+    }
+
+    public static boolean subarrayPartition(int arr[]) {
+        int totalSum = totalSum(arr);
+        for(int i=1; i<arr.length; i++) {
+            arr[i] += arr[i-1];
+            int sufixSum = totalSum - arr[i];
+            if(arr[i] == sufixSum) {
+                return true;
+            }
+        }
+        return false;
+    }
     
 
     public static void main(String args[]){
         // printPascalTriangle(5);
-        int numbers[] = {2, 4, 6, 8, 10};
+        // int numbers[] = {2, 4, 6, 8, 10};
         // System.out.println(getLargest(numbers));
         // System.out.println(getSmallest(numbers));
         // System.out.println(binarySearch(numbers, 6));
         // pairArr(numbers);
         // subArray(numbers);
+        int arr[] = {1, 2, 3, 4, 5};
+        // System.out.println(Arrays.toString(prefixSum(arr)));
+        System.out.println(subarrayPartition(arr));
     }
 }
