@@ -112,6 +112,28 @@ public class StackB {
         return false;
     }
 
+    //Remove Consecutive Subsequences
+    public static int[] removeConsecutiveSubsequences(int arr[]) {
+        Stack<Integer> s = new Stack<>();
+
+        for(int i=0; i<arr.length-1; i++) {
+            if(s.size() == 0 || s.peek() != arr[i]) {
+                s.push(arr[i]);
+            }
+            if(arr[i] == s.peek()) {
+                continue;
+            }
+            if(arr[i] != arr[i+1]) {
+                s.pop();
+            }
+        }
+        int result[] = new int[s.size()];
+        for(int i= result.length-1; i>=0; i--) {
+            result[i] = s.pop();
+        }
+        return result;
+    }
+
     public static void main(String[] args) {
         // Stack s = new Stack();
         // Stack<Integer> s = new Stack<>();
@@ -142,8 +164,11 @@ public class StackB {
         // String str = "({[]})()";
         // System.out.println(isValid(str));
 
-        String str = "((a+b))";
+        // String str = "((a+b))";
         // String str2 = "(a-b)";
-        System.out.println(isDuplicate(str));
+        // System.out.println(isDuplicate(str));
+
+        int arr[] = {1, 2, 2, 3 ,10, 10, 10, 4, 4, 4, 5, 7, 7, 2};
+        System.out.println(Arrays.toString(removeConsecutiveSubsequences(arr)));
     }
 }
