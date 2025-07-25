@@ -3,7 +3,7 @@ import java.util.*;
 public class StackB {
 
     public static void pushAtBottom(Stack<Integer> s, int data) {
-        if(s.isEmpty()) {
+        if (s.isEmpty()) {
             s.push(data);
             return;
         }
@@ -14,22 +14,22 @@ public class StackB {
 
     public static String reverseString(String str) {
         Stack<Character> s = new Stack<>();
-        for(char i=0; i<str.length(); i++) {
+        for (char i = 0; i < str.length(); i++) {
             s.push(str.charAt(i));
         }
 
         StringBuilder result = new StringBuilder("");
 
-        while(!s.isEmpty()) {
+        while (!s.isEmpty()) {
             char curr = s.pop();
             result.append(curr);
         }
-        
+
         return result.toString();
     }
 
     public static void reverseStack(Stack<Integer> s) {
-        if(s.isEmpty()) {
+        if (s.isEmpty()) {
             return;
         }
         int top = s.pop();
@@ -38,7 +38,7 @@ public class StackB {
     }
 
     public static void printStack(Stack<Integer> s) {
-        while(!s.isEmpty()) {
+        while (!s.isEmpty()) {
             System.out.println(s.pop());
         }
     }
@@ -48,16 +48,16 @@ public class StackB {
         span[0] = 1;
         s.push(0);
 
-        for(int i=1; i<stocks.length; i++) {
+        for (int i = 1; i < stocks.length; i++) {
             int currPrice = stocks[i];
-            while(!s.isEmpty() && currPrice >= stocks[s.peek()]) {
+            while (!s.isEmpty() && currPrice >= stocks[s.peek()]) {
                 s.pop();
             }
-            if(s.isEmpty()) {
-                span[i] = i+1;
+            if (s.isEmpty()) {
+                span[i] = i + 1;
             } else {
                 int prevHigh = s.peek();
-                span[i]  = i - prevHigh;
+                span[i] = i - prevHigh;
             }
             s.push(i);
         }
@@ -66,16 +66,17 @@ public class StackB {
     public static boolean isValid(String str) {
         Stack<Character> s = new Stack<>();
 
-        for(int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
 
-            if( ch == '(' || ch == '{' || ch == '[') {
+            if (ch == '(' || ch == '{' || ch == '[') {
                 s.push(ch);
             } else {
-                if(s.isEmpty()) {
+                if (s.isEmpty()) {
                     return false;
                 }
-                if( (s.peek() == '(' && ch == ')') || (s.peek() == '{' && ch == '}') || (s.peek() == '[' && ch == ']')) {
+                if ((s.peek() == '(' && ch == ')') || (s.peek() == '{' && ch == '}')
+                        || (s.peek() == '[' && ch == ']')) {
                     s.pop();
                 } else {
                     return false;
@@ -83,7 +84,7 @@ public class StackB {
             }
         }
 
-        if(s.isEmpty()) {
+        if (s.isEmpty()) {
             return true;
         } else {
             return false;
@@ -93,16 +94,16 @@ public class StackB {
     public static boolean isDuplicate(String str) {
         Stack<Character> s = new Stack<>();
 
-        for(int i=0; i<str.length(); i++) {
+        for (int i = 0; i < str.length(); i++) {
             char ch = str.charAt(i);
 
-            if(ch == ')') {
+            if (ch == ')') {
                 int count = 0;
-                while(s.peek() != '(') {
+                while (s.peek() != '(') {
                     s.pop();
                     count++;
                 }
-                if(count < 1) {
+                if (count < 1) {
                     return true;
                 }
             } else {
@@ -112,23 +113,21 @@ public class StackB {
         return false;
     }
 
-    //Remove Consecutive Subsequences
+    // Remove Consecutive Subsequences
     public static int[] removeConsecutiveSubsequences(int arr[]) {
         Stack<Integer> s = new Stack<>();
 
-        for(int i=0; i<arr.length-1; i++) {
-            if(s.size() == 0 || s.peek() != arr[i]) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (s.size() == 0 || s.peek() != arr[i]) {
                 s.push(arr[i]);
-            }
-            if(arr[i] == s.peek()) {
-                continue;
-            }
-            if(arr[i] != arr[i+1]) {
-                s.pop();
+            } else if (arr[i] == s.peek()) {
+                if (i == arr.length - 1 || arr[i] != arr[i + 1]) {
+                    s.pop();
+                }
             }
         }
         int result[] = new int[s.size()];
-        for(int i= result.length-1; i>=0; i--) {
+        for (int i = result.length - 1; i >= 0; i--) {
             result[i] = s.pop();
         }
         return result;
@@ -147,7 +146,7 @@ public class StackB {
         // pushAtBottom(s, 4);
 
         // while(!s.isEmpty()) {
-        //     System.out.println(s.pop());
+        // System.out.println(s.pop());
         // }
 
         // String str = "abc";
@@ -158,7 +157,7 @@ public class StackB {
         // stockSpan(stocks, span);
 
         // for(int i=0; i<span.length; i++) {
-        //     System.out.print(span[i]+" ");
+        // System.out.print(span[i]+" ");
         // }
 
         // String str = "({[]})()";
@@ -168,7 +167,7 @@ public class StackB {
         // String str2 = "(a-b)";
         // System.out.println(isDuplicate(str));
 
-        int arr[] = {1, 2, 2, 3 ,10, 10, 10, 4, 4, 4, 5, 7, 7, 2};
+        int arr[] = { 1, 2, 2, 3, 10, 10, 10, 4, 4, 4, 5, 7, 7, 2 };
         System.out.println(Arrays.toString(removeConsecutiveSubsequences(arr)));
     }
 }
