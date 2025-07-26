@@ -43,6 +43,24 @@ public class StackB {
         }
     }
 
+    public static int[] nextGreater(int nums[]) {
+        int res[] = new int[nums.length];
+        Stack<Integer> s = new Stack<>();
+
+        for (int i = nums.length - 1; i >= 0; i--) {
+            while (s.size() != 0 && s.peek() <= nums[i]) {
+                s.pop();
+            }
+            if (s.isEmpty()) {
+                res[i] = -1;
+            } else {
+                res[i] = s.peek();
+            }
+            s.push(nums[i]);
+        }
+        return res;
+    }
+
     public static void stockSpan(int stocks[], int span[]) {
         Stack<Integer> s = new Stack<>();
         span[0] = 1;
@@ -167,7 +185,10 @@ public class StackB {
         // String str2 = "(a-b)";
         // System.out.println(isDuplicate(str));
 
-        int arr[] = { 1, 2, 2, 3, 10, 10, 10, 4, 4, 4, 5, 7, 7, 2 };
-        System.out.println(Arrays.toString(removeConsecutiveSubsequences(arr)));
+        // int arr[] = { 1, 2, 2, 3, 10, 10, 10, 4, 4, 4, 5, 7, 7, 2 };
+        // System.out.println(Arrays.toString(removeConsecutiveSubsequences(arr)));
+
+        int nums[] = { 1, 5, 3, 2, 1, 6, 3, 4 };
+        System.out.println(Arrays.toString(nextGreater(nums)));
     }
 }
