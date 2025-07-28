@@ -339,6 +339,29 @@ public class LinkedList {
         }
     }
 
+    //add two nos represented by linked list
+    public static Node addTwoNos(Node first, Node second) {
+        Node dummy = new Node(-1);
+        Node temp = dummy;
+        int carry = 0;
+
+        while(first != null || second != null || carry != 0) {
+            int sum = carry;
+            if(first != null) {
+                sum += first.data;
+                first = first.next;
+            }
+            if(second != null) {
+                sum += second.data;
+                second = second.next;
+            }
+            carry = sum / 10;
+            temp.next = new Node(sum % 10);
+            temp = temp.next;
+        }
+        return dummy.next;
+    }
+
     public static void main(String args[]) {
         LinkedList ll = new LinkedList();
         // ll.addLast(2);
