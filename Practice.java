@@ -84,7 +84,7 @@ class Practice {
         for (int i = 0; i < n; i++) {
             leftMax[i] = Math.max(leftMax[i], height[i]);
         }
-        System.out.println("LeftMAx : ");
+        System.out.println("LeftMax : ");
         for (int i = 0; i < leftMax.length; i++) {
             System.out.print(leftMax[i] + " ");
         }
@@ -277,6 +277,46 @@ class Practice {
         return secondLargest;
     }
 
+    public static void swap(int a, int b) {
+        System.out.println("Brfore Swapping :");
+        System.out.println("a : " + a);
+        System.out.println("b : " + b);
+        a = a + b; //9 + 3 = 12
+        b = a - b; //12 - 3 = 9
+        a = a - b; //12 - 9 = 3
+        System.out.println("After Swapping :");
+        System.out.println("a : " + a);
+        System.out.println("b : " + b);
+    }
+
+   /**
+    * The `rotateArray` function rotates an input array by a specified number of positions to the
+    * right.
+    * 
+    * @param arr The `arr` parameter is an integer array that represents the array you want to rotate.
+    * @param k The parameter `k` in the `rotateArray` method represents the number of positions by
+    * which you want to rotate the array elements. If `k` is positive, the array elements will be
+    * rotated to the right by `k` positions. If `k` is negative, the array elements will
+    * @return The `rotateArray` method returns an integer array that is the result of rotating the
+    * input array `arr` by `k` positions to the right.
+    */
+    public static int[] rotateArray(int arr[], int k) {
+        int ans[] = new int[arr.length];
+        int j = 0;
+        int n = arr.length;
+        k = k % n;
+
+        for(int i=n-k; i<n; i++) {
+            ans[j++] = arr[i];
+        }
+
+        for(int i=0; i<n-k; i++) {
+            ans[j++] = arr[i];
+        }
+
+        return ans;
+    }
+
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
@@ -302,7 +342,14 @@ class Practice {
         // fruits.add(1);
         // fruits.add(0);
         // System.out.println(fruitsInBasket(fruits));
-        int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
-        System.out.println(secondLargest(arr));
+        // int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
+        // System.out.println(secondLargest(arr));
+
+        // int a = 9;
+        // int b = 3;
+        // swap(a, b);
+
+        int arr[] = {1, 2, 3, 4, 5};
+        System.out.println(Arrays.toString(rotateArray(arr, 4)));
     }
 }
