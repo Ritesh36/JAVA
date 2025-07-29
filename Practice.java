@@ -251,6 +251,32 @@ class Practice {
         return maxFruits;
     }
 
+    public static int largest(int arr[]) {
+        int max = Integer.MIN_VALUE;
+
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] > max) {
+                max = arr[i];
+            }
+        }
+
+        return max;
+    }
+
+    public static int secondLargest(int arr[]) {
+        int firstLargest = largest(arr);
+
+        for(int i=0; i<arr.length; i++) {
+            if(arr[i] == firstLargest) {
+                arr[i] = Integer.MIN_VALUE;
+            }
+        }
+
+        int secondLargest = largest(arr);
+
+        return secondLargest;
+    }
+
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
@@ -267,15 +293,16 @@ class Practice {
         // System.out.println(missingNumber(nums));
         // int arr[] = {-5, -4, -3};
         // System.out.println(maxSumSubArray(arr));
-        ArrayList<Integer> fruits = new ArrayList<>();
-        fruits.add(3);
-        fruits.add(3);
-        fruits.add(3);
-        fruits.add(1);
-        fruits.add(2);
-        fruits.add(1);
-        fruits.add(0);
-        System.out.println(fruitsInBasket(fruits));
-
+        // ArrayList<Integer> fruits = new ArrayList<>();
+        // fruits.add(3);
+        // fruits.add(3);
+        // fruits.add(3);
+        // fruits.add(1);
+        // fruits.add(2);
+        // fruits.add(1);
+        // fruits.add(0);
+        // System.out.println(fruitsInBasket(fruits));
+        int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
+        System.out.println(secondLargest(arr));
     }
 }

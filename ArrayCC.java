@@ -319,6 +319,18 @@ public class ArrayCC {
         }
     }
 
+    public static int firstRepeatingNum(int arr[]) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<arr.length; i++) {
+            map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
+
+            if(map.get(arr[i]) > 1) {
+                return arr[i];
+            }
+        }
+        return -1;
+    }
+
     public static void main(String args[]) {
         // printPascalTriangle(5);
         // int numbers[] = {2, 4, 6, 8, 10};
@@ -330,7 +342,9 @@ public class ArrayCC {
         // int arr[] = {1, 2, 3, 4, 5};
         // System.out.println(Arrays.toString(prefixSum(arr)));
         // System.out.println(subarrayPartition(arr));
-        int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
-        secondLargest(arr);
+        // int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
+        // secondLargest(arr);
+        int arr[] = {1, 5, 3, 4, 6};
+        System.out.println(firstRepeatingNum(arr));
     }
 }
