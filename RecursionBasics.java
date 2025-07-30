@@ -247,6 +247,25 @@ public class RecursionBasics {
         printSubsequences(idx + 1, arr, current);
     }
 
+    //find out the sum of its digits using recursion;
+    public static int integerSum(int num, int sum) {
+        if(num == 0) {
+            return sum;
+        }
+        int digit = num % 10;
+        sum += digit;
+        num = num / 10;
+        return integerSum(num, sum);
+    }
+
+    //return the count of digits in a number
+    public static int countDigits(int num) {
+        if(num == 0) {
+            return 0;
+        }
+        return 1 + countDigits(num / 10);
+    }
+
 
     public static void main(String[] args) {
         // printDec(10);
@@ -267,8 +286,13 @@ public class RecursionBasics {
         // printNos(1234);
         // System.out.println(stringLen(str, 0, 0));
         // System.out.println(countSubstrings("aba", 0, 1)); // Example usage
-        int[] arr = {1, 2, 3};
-        List<Integer> current = new ArrayList<>();
-        printSubsequences(0, arr, current);
+        // int[] arr = {1, 2, 3};
+        // List<Integer> current = new ArrayList<>();
+        // printSubsequences(0, arr, current);
+
+        int num = 1234;
+        // int sum = 0;
+        // System.out.println("Sum of digits: " + integerSum(num, sum));
+        System.out.println("Count of digits: " + countDigits(num));
     }
 }
