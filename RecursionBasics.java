@@ -302,10 +302,30 @@ public class RecursionBasics {
         return GCD(y, x % y);
     }
 
+    //print the max value of the array
+    public static void maxValue(int arr[], int i, int maximum) {
+        if(i == arr.length) {
+            System.out.println(maximum);
+            return;
+        }
+        maximum = Math.max(maximum, arr[i]);
+        maxValue(arr, i + 1, maximum);
+    }
+
+    public static int arraySum(int arr[], int i) {
+        if(i == arr.length) {
+            return 0;
+        }
+        int val = arraySum(arr, i+1);
+        return val + arr[i];
+    }
 
     public static void main(String[] args) {
 
-        System.out.println(GCD(24, 15));
+        int arr[] = {2, 5, 3, 1};
+        System.out.println(arraySum(arr, 0));
+
+        // System.out.println(GCD(24, 15));
         // printDec(10);
         // printInc(10);
         // System.out.println(factorial(5));
