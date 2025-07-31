@@ -65,6 +65,15 @@ public class JavaBasics {
         }
     }
 
+    public static int GCD(int x, int y) {
+        while(x % y != 0) {
+            int rem = x % y;
+            x = y;
+            y = rem;
+        }
+        return y;
+    }
+
     
     public static void main(String args[]){
         // Scanner sc = new Scanner(System.in);
@@ -72,7 +81,8 @@ public class JavaBasics {
         // primeNo(1, 100);
         // binToDec(100);
         // decToBin(5);
-        System.out.println(isPalindrome(120));
+        // System.out.println(isPalindrome(120));
+        System.out.println(GCD(24, 15));
         
 
         //Reverse Number

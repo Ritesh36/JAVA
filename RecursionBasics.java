@@ -266,8 +266,47 @@ public class RecursionBasics {
         return 1 + countDigits(num / 10);
     }
 
+    public static void printMultiples(int num, int k) {
+        if(k == 0) {
+            return;
+        }
+        printMultiples(num, k-1);
+        System.out.println(num * k);
+    }
+
+    //Find the sum of natural nos. till n but with alternate signs
+    public static int alternateSignsSum(int n) {
+        if(n == 0) return 0;
+
+        if(n % 2 == 0) {
+            return alternateSignsSum(n-1) - n;
+        } else {
+            return alternateSignsSum(n-1) + n;
+        }
+    }
+
+    //GCD (Greatest Common Divisor) 
+    /**
+     * The function calculates the greatest common divisor (GCD) of two integers using recursion.
+     * 
+     * @param x The parameter `x` represents the first integer input for which you want to find the
+     * greatest common divisor (GCD) with another integer `y`.
+     * @param y The parameter `y` represents the second integer input for which we are calculating the
+     * Greatest Common Divisor (GCD) with the first integer `x`.
+     * @return The Greatest Common Divisor (GCD) of the two input integers `x` and `y` is being
+     * returned.
+     */
+    public static int GCD(int x, int y) {
+        if(y == 0) {
+            return x;
+        }
+        return GCD(y, x % y);
+    }
+
 
     public static void main(String[] args) {
+
+        System.out.println(GCD(24, 15));
         // printDec(10);
         // printInc(10);
         // System.out.println(factorial(5));
@@ -290,9 +329,12 @@ public class RecursionBasics {
         // List<Integer> current = new ArrayList<>();
         // printSubsequences(0, arr, current);
 
-        int num = 1234;
+        // int num = 1234;
         // int sum = 0;
         // System.out.println("Sum of digits: " + integerSum(num, sum));
-        System.out.println("Count of digits: " + countDigits(num));
+        // System.out.println("Count of digits: " + countDigits(num));
+
+        // printMultiples(5, 4);
+        // System.out.println(alternateSignsSum(4));
     }
 }
