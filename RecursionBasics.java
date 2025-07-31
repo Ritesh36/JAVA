@@ -320,10 +320,31 @@ public class RecursionBasics {
         return val + arr[i];
     }
 
+    //Print where x exists in the array or not
+    public static boolean searchInArray(int arr[], int i, int x) {
+        // base case
+        if(i >= arr.length)  return false;
+        // self work
+        if(arr[i] == x)  return true;
+        //recursive work 
+        return searchInArray(arr, i + 1, x);
+    }
+
+    public static void searchIdx(int arr[], int i, int x) {
+        if(i >= arr.length) return;
+
+        if(arr[i] == x) {
+            System.out.print(i + " ");
+        }
+
+        searchIdx(arr, i + 1, x);
+    }
+
     public static void main(String[] args) {
 
-        int arr[] = {2, 5, 3, 1};
-        System.out.println(arraySum(arr, 0));
+        int arr[] = {2, 5, 3, 1, 2};
+        // System.out.println(searchInArray(arr, 0, 0));
+        searchIdx(arr, 0, 2);
 
         // System.out.println(GCD(24, 15));
         // printDec(10);

@@ -317,6 +317,41 @@ class Practice {
         return ans;
     }
 
+    public static int searchInArray(int arr[], int i, int target) {
+        if(i >= arr.length) {
+            return -1;
+        }
+        if(arr[i] == target) {
+            return i;
+        }
+        return searchInArray(arr, i + 1, target);
+    }
+
+    public static ArrayList<Integer> findAllIndices(int arr[], int i, int target) {
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        if(i >= arr.length) return ans;
+
+        if(arr[i] == target) {
+            ans.add(i);
+        }
+
+        ArrayList<Integer> smallAns = findAllIndices(arr, i + 1, target);
+        ans.addAll(smallAns);
+
+        return ans;
+    }
+
+    public static boolean isSorted(int arr[], int i) {
+        if(i >= arr.length - 1) {
+            return true;
+        }
+
+        if(arr[i] > arr[i + 1]) return false;
+
+        return isSorted(arr, i + 1);
+    }
+
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
@@ -349,7 +384,8 @@ class Practice {
         // int b = 3;
         // swap(a, b);
 
-        int arr[] = {1, 2, 3, 4, 5};
-        System.out.println(Arrays.toString(rotateArray(arr, 4)));
+        int arr[] = {1, 2, 3, 4, 0};
+        // System.out.println(findAllIndices(arr, 0, 4));
+        System.out.println(isSorted(arr, 0));
     }
 }
