@@ -340,11 +340,25 @@ public class RecursionBasics {
         searchIdx(arr, i + 1, x);
     }
 
+    public static String removeOccurences(String str, int i) {
+        if(i == str.length()) {
+            return "";
+        }
+        char currChar = str.charAt(i);
+        String restOfString = removeOccurences(str, i + 1);
+        if(currChar == 'a') {
+            return restOfString;
+        }
+        return currChar + restOfString;
+    }
+
     public static void main(String[] args) {
 
-        int arr[] = {2, 5, 3, 1, 2};
+        // int arr[] = {2, 5, 3, 1, 2};
         // System.out.println(searchInArray(arr, 0, 0));
-        searchIdx(arr, 0, 2);
+        // searchIdx(arr, 0, 2);
+
+        System.out.println(removeOccurences("abracadabra", 0));
 
         // System.out.println(GCD(24, 15));
         // printDec(10);
