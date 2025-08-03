@@ -352,6 +352,16 @@ class Practice {
         return isSorted(arr, i + 1);
     }
 
+    public static void printSubsequences(String str, String ans) {
+        if(str.length() == 0) {
+            System.out.println(ans);
+            return;
+        }
+
+        printSubsequences(str.substring(1), ans + str.charAt(0));
+        printSubsequences(str.substring(1), ans);
+    }
+
     public static void main(String args[]) {
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
