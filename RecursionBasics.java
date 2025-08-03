@@ -364,8 +364,28 @@ public class RecursionBasics {
         return currChar + restOfString;
     }
 
+    public static void keypadCombinations(String dig, String kp[], String res) {
+        if(dig.length() == 0) {
+            System.out.print(res + " ");
+            return;
+        }
+
+        int currNum = dig.charAt(0) - '0';
+        String currChoices = kp[currNum];
+
+        for(int i=0; i<currChoices.length(); i++) {
+            keypadCombinations(dig.substring(1), kp, res + currChoices.charAt(i));
+        }
+    }
+
 
     public static void main(String[] args) {
+
+        String dig = "253";
+
+        String kp[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+
+        keypadCombinations(dig, kp, "");
 
         // int arr[] = {2, 5, 3, 1, 2};
         // System.out.println(searchInArray(arr, 0, 0));

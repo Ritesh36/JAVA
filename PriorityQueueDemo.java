@@ -1,7 +1,7 @@
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class MyPriorityQueueDemo {
+public class PriorityQueueDemo {
 
     public static class Student implements Comparable<Student> {
         String name;
