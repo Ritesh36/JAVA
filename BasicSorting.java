@@ -1,6 +1,6 @@
 public class BasicSorting {
 
-    public static void bubbleSort(int arr[]){
+    public static void bubbleSort(int arr[]){  //O(n^2)
         for(int turn=0; turn<arr.length-1; turn++){
             for(int j=0; j<arr.length-1-turn; j++){
                 if(arr[j] > arr[j+1]){
@@ -8,6 +8,23 @@ public class BasicSorting {
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
                 }
+            }
+        }
+    }
+
+    public static void bubbleSort2(int arr[]) { //O(n^2)
+        for(int i=0; i<arr.length-1; i++) {
+            boolean swapped = false;
+            for(int j=0; j<arr.length-i-1; j++) {
+                if(arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    swapped = true;
+                }
+            }
+            if(swapped == false) {
+                break; // No swaps means array is sorted
             }
         }
     }
