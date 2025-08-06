@@ -352,6 +352,16 @@ class Practice {
         return isSorted(arr, i + 1);
     }
 
+    /**
+     * The function recursively prints all possible subsequences of a given string.
+     * 
+     * @param str The `str` parameter in the `printSubsequences` method represents the input string for
+     * which we want to find all possible subsequences. This method recursively generates all
+     * subsequences of the input string and prints them out.
+     * @param ans The `ans` parameter in the `printSubsequences` method is used to store the current
+     * subsequence being generated during the recursive calls. It starts as an empty string and gets
+     * updated as characters are added to form subsequences.
+     */
     public static void printSubsequences(String str, String ans) {
         if(str.length() == 0) {
             System.out.println(ans);
@@ -362,7 +372,40 @@ class Practice {
         printSubsequences(str.substring(1), ans);
     }
 
+    /**
+     * The function `moveZerosToEnd` iterates through an array and moves all zeros to the end while
+     * maintaining the relative order of non-zero elements.
+     * 
+     * @param arr The `arr` parameter is an integer array that contains elements to be sorted with
+     * zeros moved to the end of the array. The `moveZerosToEnd` method iterates through the array and
+     * swaps elements to move zeros to the end while maintaining the relative order of non-zero
+     * elements.
+     */
+    public static void moveZerosToEnd(int arr[]) {
+        for(int i=0; i<arr.length - 1; i++) {
+            for(int j=i+1; j<arr.length; j++) {
+                if(arr[i] == 0 && arr[j] != 0) {
+                    // Swap
+                    int temp = arr[i];
+                    arr[i] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+        }
+    }
+
+    public static void printArr(int arr[]) {
+        for(int i=0; i<arr.length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
     public static void main(String args[]) {
+        int arr[] = {0, 1, 0, 3, 12};
+        moveZerosToEnd(arr);
+        printArr(arr);
+
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
         // String arr[] = {"sun", "earth", "mars", "mercury"};
