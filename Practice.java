@@ -383,12 +383,12 @@ class Practice {
      */
     public static void moveZerosToEnd(int arr[]) {
         for(int i=0; i<arr.length - 1; i++) {
-            for(int j=i+1; j<arr.length; j++) {
-                if(arr[i] == 0 && arr[j] != 0) {
+            for(int j=0; j<arr.length - i - 1; j++) {
+                if(arr[j] == 0 && arr[j+1] != 0) {
                     // Swap
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
                 }
             }
         }
@@ -401,10 +401,36 @@ class Practice {
         System.out.println();
     }
 
+    /**
+     * The function `sortFruits` implements selection sort to sort an array of strings in ascending
+     * order.
+     * 
+     * @param fruits The `sortFruits` method you provided is a simple implementation of selection sort
+     * for sorting an array of strings in ascending order. It iterates through the array and finds the
+     * minimum element in the unsorted portion of the array, then swaps it with the element at the
+     * current position.
+     */
+    public static void sortFruits(String fruits[]) {
+        int n = fruits.length;
+        for(int i=0; i<n-1; i++) {
+            int min_Idx = i;
+            for(int j=i+1; j<n; j++) {
+                if(fruits[j].compareTo(fruits[min_Idx]) < 0) {
+                    min_Idx = j;
+                }
+            }
+            String temp = fruits[i];
+            fruits[i] = fruits[min_Idx];
+            fruits[min_Idx] = temp;
+        }
+    }
+
     public static void main(String args[]) {
-        int arr[] = {0, 1, 0, 3, 12};
-        moveZerosToEnd(arr);
-        printArr(arr);
+        // int arr[] = {0, 1, 0, 3, 12};
+        // moveZerosToEnd(arr);
+        String fruits[] = {"banana", "apple", "orange", "kiwi", "grape"};
+        sortFruits(fruits);
+        printArr(fruits);
 
         // int height[] = {1,8,6,2,5,4,8,3,7};
         // System.out.println(maxArea(height));
@@ -437,8 +463,8 @@ class Practice {
         // int b = 3;
         // swap(a, b);
 
-        int arr[] = {1, 2, 3, 4, 0};
+        // int arr[] = {1, 2, 3, 4, 0};
         // System.out.println(findAllIndices(arr, 0, 4));
-        System.out.println(isSorted(arr, 0));
+        // System.out.println(isSorted(arr, 0));
     }
 }
