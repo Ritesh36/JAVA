@@ -79,10 +79,36 @@ public class BasicSorting {
             }
         }
     }
+
+    public static void sortArr(int nums[]) {
+        int n = nums.length;
+        int x = -1, y = -1;
+
+        if(n <= 1) {
+            return;
+        }
+
+        for(int i=1; i<n; i++) {
+            if(nums[i-1] > nums[i]) {
+                if(x == -1) {
+                    x = i-1;
+                } else {
+                    y = i;
+                }
+            }
+        }
+
+        int temp = nums[x];
+        nums[x] = nums[y];
+        nums[y] = temp;
+    }
+
     public static void main(String args[]){
-        int arr[] = {5,4,1,3,2};
-        System.out.println(arr.length);
-        countingSort(arr);
-        printArr(arr);
+        // int arr[] = {5,4,1,3,2};
+        // System.out.println(arr.length);
+        // countingSort(arr);
+        int nums[] = {10, 5, 6, 7, 8, 9, 3};
+        sortArr(nums);
+        printArr(nums);
     }
 }
