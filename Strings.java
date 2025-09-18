@@ -198,9 +198,49 @@ public class Strings {
     
         return maxLength;
     }
+
+    public static int countHouseLit(String str, int power) {
+    int count = 0;
+    // increase power for every C
+    for (int i = 0; i < str.length(); i++) {
+        if (str.charAt(i) == 'C') {
+            power++;
+        }
+    }
+
+    for (int i = 0; i < str.length(); i++) {
+        if (str.charAt(i) == 'B') {
+            // check left side
+            int left = i - 1;
+            int p = power; // temporary power
+            while (p > 0 && left >= 0) {
+                if (str.charAt(left) == 'H') {
+                    count++;
+                }
+                p--;
+                left--;
+            }
+            // check right side
+            int right = i + 1;
+            p = power;
+            while (p > 0 && right < str.length()) {
+                if (str.charAt(right) == 'H') {
+                    count++;
+                }
+                p--;
+                right++;
+            }
+        }
+    }
+    return count;
+}
     
     public static void main(String[] args) {
-        String str = "abcdabcde";
-        System.out.println(lengthOfLongestSubstring(str));
+        // String str = "abcdabcde";
+        // System.out.println(lengthOfLongestSubstring(str));
+
+        String str = "HBHHC";
+        int power = 1;
+        System.out.println(countHouseLit(str, power));
     }
 }

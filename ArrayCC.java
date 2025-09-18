@@ -288,13 +288,13 @@ public class ArrayCC {
     public static ArrayList<Integer> uniqueElement(int arr[]) {
         HashMap<Integer, Integer> map = new HashMap<>();
 
-        for(int i=0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
 
         ArrayList<Integer> result = new ArrayList<>();
-        for(int num : map.keySet()) {
-            if(map.get(num) == 1) {
+        for (int num : map.keySet()) {
+            if (map.get(num) == 1) {
                 result.add(num);
             }
         }
@@ -305,14 +305,14 @@ public class ArrayCC {
     public static void secondLargest(int arr[]) {
         HashSet<Integer> set = new HashSet<>();
 
-        for(int i=0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             set.add(arr[i]);
         }
 
         ArrayList<Integer> list = new ArrayList<>(set);
         Collections.sort(list);
 
-        if(list.size() < 2) {
+        if (list.size() < 2) {
             System.out.println("No second largest element");
         } else {
             System.out.println("Second Largest : " + list.get(list.size() - 2));
@@ -321,14 +321,36 @@ public class ArrayCC {
 
     public static int firstRepeatingNum(int arr[]) {
         HashMap<Integer, Integer> map = new HashMap<>();
-        for(int i=0; i<arr.length; i++) {
+        for (int i = 0; i < arr.length; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
 
-            if(map.get(arr[i]) > 1) {
+            if (map.get(arr[i]) > 1) {
                 return arr[i];
             }
         }
         return -1;
+    }
+
+    public static int[] petrolAmount(int vechical, int interval, int currAmount[], int petrol[]) {
+        int result[] = Arrays.copyOf(currAmount, vechical); // start with current amounts
+        boolean canFill = true;
+
+        for (int i = 0; i < petrol.length; i++) {
+            if (petrol[i] != 1) {
+                canFill = false;
+                break;
+            }
+        }
+
+        while (interval > 0) { // run for each interval
+            if (canFill) {
+                for (int i = 0; i < result.length; i++) {
+                    result[i] *= 2; // double each time
+                }
+            }
+            interval--;
+        }
+        return result;
     }
 
     public static void main(String args[]) {
@@ -344,7 +366,13 @@ public class ArrayCC {
         // System.out.println(subarrayPartition(arr));
         // int arr[] = { 9, 8, 9, 6, 9, 5, 8 };
         // secondLargest(arr);
-        int arr[] = {1, 5, 3, 4, 6};
-        System.out.println(firstRepeatingNum(arr));
+        // int arr[] = { 1, 5, 3, 4, 6 };
+        // System.out.println(firstRepeatingNum(arr));
+
+        int vechical = 5;
+        int interval = 2;
+        int currAmount[] = { 1, 2, 3, 4, 5 };
+        int petrol[] = { 1, 1, 1, 1, 1 };
+        System.out.println(Arrays.toString(petrolAmount(vechical, interval, currAmount, petrol)));
     }
 }
