@@ -65,6 +65,16 @@ public class JavaBasics {
         }
     }
 
+    /**
+     * The function calculates the greatest common divisor (GCD) of two integers using the Euclidean
+     * algorithm.
+     * 
+     * @param x The parameter `x` represents the first integer for which you want to find the greatest
+     * common divisor (GCD) with another integer `y`.
+     * @param y The parameter `y` in the `GCD` method represents the second integer input for which we
+     * want to find the greatest common divisor (GCD) with the first integer `x`.
+     * @return The GCD (Greatest Common Divisor) of the two input integers x and y is being returned.
+     */
     public static int GCD(int x, int y) {
         while(x % y != 0) {
             int rem = x % y;
