@@ -188,7 +188,7 @@ public class StackB {
         // int arr[] = { 1, 2, 2, 3, 10, 10, 10, 4, 4, 4, 5, 7, 7, 2 };
         // System.out.println(Arrays.toString(removeConsecutiveSubsequences(arr)));
 
-        int nums[] = { 1, 5, 3, 2, 1, 6, 3, 4 };
-        System.out.println(Arrays.toString(nextGreater(nums)));
+        // int nums[] = { 1, 5, 3, 2, 1, 6, 3, 4 };
+        // System.out.println(Arrays.toString(nextGreater(nums)));
     }
 }
